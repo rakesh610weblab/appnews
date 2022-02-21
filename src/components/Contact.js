@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import { Chart } from 'react-charts'
+import { motion } from "framer-motion"
+import { useRef } from "react";
+
 
 const Contact = () => {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -14,7 +17,7 @@ const Contact = () => {
   const [color, setColor] = useState("black");
   const colorchange = () => {
     setColor("red");
-  }
+  };
 
   // Handle fields
   const handlename = (e) => {
@@ -38,7 +41,7 @@ const Contact = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     if (name === "" || email === "" || phone === "" || message === "") {
-      setError(true);   
+      setError(true);
     } else {
       setSubmitted(true);
       setError(false);
@@ -60,11 +63,46 @@ const Contact = () => {
       </div>
     );
   };
-    return (
-        <>
-            <div className="container my-4">
-                <h1 className='text-center'>Contact Us</h1>
-                <div className="col-md-4 my-5 offset-md-4">
+
+
+  const data = React.useMemo(
+    () => [
+      {
+        label: 'Series 1',
+        data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+      },
+      {
+        label: 'Series 2',
+        data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+      }
+    ],
+    []
+  )
+  const axes = React.useMemo(
+    () => [
+      { primary: true, type: 'linear', position: 'bottom' },
+      { type: 'linear', position: 'left' }
+    ],
+    []
+  )
+  const constraintsRef = useRef(null);
+
+  const myName = useRef(null);
+
+  const usingRef = (e) => {
+    e.preventDefault();
+    const getName = myName.current.value;
+    // myName.current.focus();
+    myName.current.value='WebLab';
+    // myName.current.style.color='blue';
+    // console.log(getName);
+  }
+
+  return (
+    <>
+      <div className="container my-4">
+        <h1 className="text-center">Contact Us</h1>
+        <div className="col-md-4 my-5 offset-md-4">
           <form>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
@@ -130,11 +168,24 @@ const Contact = () => {
             {successMessage()}
           </div>
         </div>
-            </div>
-            <h3 style={{color:color}}>My color is {color}</h3>
-            <button onClick={() => colorchange()}>I can change color</button>
-        </>
-    )
-}
+        <motion.div className="container" ref={constraintsRef}>
+          <motion.h3 className="item" drag dragConstraints={constraintsRef} style={{ color: color }}>My color is {color}</motion.h3>
+        </motion.div>
+        
+        <button style={{padding: '0.5em' }} onClick={() => colorchange()}>I can change color</button> <br/> <br/>
+        <div style={{width: '100%', height: '300px' }}>
+          <Chart data={data} axes={axes} />
+        </div>
 
-export default Contact
+        <form action="" onSubmit={usingRef}>
+          <input type="text" ref={myName}/>
+          <button>Submit</button>
+        </form>
+        
+
+      </div>
+    </>
+  );
+};
+
+export default Contact;

@@ -32,7 +32,6 @@ i {
 }
 
 body {
-  width: 80%;
   height: 100vh;
   margin: auto;
 }
@@ -97,7 +96,10 @@ header {
   align-items: center;
   color: var(--main-color);
 }
-
+.main-cart-section {
+   width: 80%;
+   margin: 0 auto;
+}
 .main-cart-section h1 {
   font-style: normal;
   font-weight: bold;
