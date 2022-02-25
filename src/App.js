@@ -8,10 +8,7 @@ import News from "./components/News";
 import About from "./components/About";
 import LoadingBar from "react-top-loading-bar";
 import Footer from "./components/Footer";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
 import Contact from "./components/Contact";
-import Cart from "./components/cart/Cart";
 
 const App = () => {
   
@@ -126,9 +123,6 @@ const App = () => {
             }
           />
           <Route exact path="/contact" element={<Contact/>} />
-          <Route exact path="/cart" element={<Cart/>} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </div>
