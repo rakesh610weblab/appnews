@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="sticky-top navbar navbar-expand-md navbar-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <img src="./appnews/images/logo.svg" alt="610" style={{ width: "180px" }} />
+          <img src="/appnews/images/logo.svg" alt="610" style={{ width: "180px" }} />
         </Link>
         <button
           className="navbar-toggler"
