@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="sticky-top navbar navbar-expand-md navbar-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <img src="/logo.svg" alt="610" style={{ width: "180px" }} />
+          <img src="./public/logo.svg" alt="610" style={{ width: "180px" }} />
         </Link>
         <button
           className="navbar-toggler"
@@ -66,18 +66,9 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cart">
-                Cart
-              </Link>
-            </li>
+          
           </ul>
-          <Link to="/login" class="btn btn-primary mx-1" role="button">
-            Login
-          </Link>
-          <Link to="/signup" class="btn btn-primary mx-1" role="button">
-            Signup
-          </Link>
+        
           <form className="d-flex">
             <input
               className="form-control me-2"
